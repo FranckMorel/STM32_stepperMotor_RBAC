@@ -7,8 +7,15 @@ Locating Ports -> Block diagramm ( Datasheet ) , Memory mapping
 Formula für GPIO Port Bits setzen
 pin n:
 
-clear -> &= ~(3 << (n*2))
-set   -> |= value << (n*2)
+GPIOx->MODER &= ~(3U << (n*2)); input mode (00)
+
+GPIOx->MODER &= ~(3U << (n*2));
+GPIOx->MODER |= (1U << (n*2));  output mode (01)
+
+GPIOx->MODER &= ~(3U << (n*2));
+GPIOx->MODER |= (2U << (n*2));  Alternate Function mode (10)
+
+GPIOx->MODER |= (3U << (n*2));  AAnalog mode (11)
 
 */
 
@@ -91,19 +98,19 @@ int main(void){
 
 int main(void)
 {
-   /* StepperInit();
-    tim2_Init();*/
+    StepperInit();
+    tim2_Init();
 
 
     while(1)
     {
-    	/*moveForward(1024,1);
+    	moveForward(2048,1);
     	motionDelay_ms(1000);
         //for(volatile int i=0; i<1500000; i++){} // vorhin Delay mit Schleife
 
-        moveBackward(1024,1);
+        moveBackward(2048,1);
         motionDelay_ms(1000);
-        //for(volatile int i=0; i<1500000; i++){}*/
+        //for(volatile int i=0; i<1500000; i++){}
 
 
     }

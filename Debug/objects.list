@@ -1,3 +1,4 @@
+"./Src/display.o"
 "./Src/main.o"
 "./Src/motor_control.o"
 "./Src/stepper.o"

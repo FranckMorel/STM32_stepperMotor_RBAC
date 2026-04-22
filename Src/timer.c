@@ -6,7 +6,7 @@ void tim2_Init(void){
 
 	TIM2 -> PSC = 1600 - 1; // 16MHz
 	TIM2 -> ARR = 10 - 1 ; // 1ms
-	//TIM2 -> CNT = 0;
+	TIM2 -> CNT = 0;
 	//TIM2 -> SR  = 0;
 	//TIM2 -> EGR = (1U << 0); // Update Event
 
