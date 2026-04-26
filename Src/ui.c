@@ -5,7 +5,6 @@
  *      Author: Morel
  */
 
-/*Currently testing Display functions on this project to use on the stepperMotor project*/
 
 #include "ui.h"
 #include "tft.h"
