@@ -5,6 +5,10 @@
  *      Author: Morel
  */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 88455b31cb6fd77162db44a974472b4aa4adda20
 #include "ui.h"
 #include "tft.h"
 #include "motor_control.h"
