@@ -13,7 +13,7 @@ static MotorMode_t currentMode = MODE_NORMAL;
 static MotorDirection_t currentDirection = DIR_FORWARD;
 static MotorState_t currentState = MOTOR_IDLE;
 
-static uint16_t adminSteps = 2048;
+static uint16_t adminSteps = 0;
 static uint32_t adminDelayMs = 1;
 
 

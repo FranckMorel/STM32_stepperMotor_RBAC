@@ -100,18 +100,24 @@ int main(void)
 {
     StepperInit();
     tim2_Init();
+    uint8_t i;
 
 
     while(1)
     {
+    	for(i=0; i<4; i++){
     	moveForward(2048,1);
-    	motionDelay_ms(1000);
+    	motionDelay_ms(200);
         //for(volatile int i=0; i<1500000; i++){} // vorhin Delay mit Schleife
 
         moveBackward(2048,1);
-        motionDelay_ms(1000);
+        motionDelay_ms(200);
         //for(volatile int i=0; i<1500000; i++){}
+    	}
 
+    	StepperStop();
+    	motionDelay_ms(2000);
+    	i=0;
 
     }
 }

@@ -1,14 +1,14 @@
 #include <stm32f401xe.h>
 
 
-#define IN1_AN			(GPIOA -> BSRR = (1<<0))
-#define IN1_AUS			(GPIOA -> BSRR = (1<<16))
-#define IN2_AN			(GPIOA -> BSRR = (1<<1))
-#define IN2_AUS			(GPIOA -> BSRR = (1<<17))
-#define IN3_AN			(GPIOA -> BSRR = (1<<4))
-#define IN3_AUS			(GPIOA -> BSRR = (1<<20))
-#define IN4_AN			(GPIOB -> BSRR = (1<<0))
-#define IN4_AUS			(GPIOB -> BSRR = (1<<16))
+#define IN1_AN			(GPIOA -> BSRR = (1U<<0))
+#define IN1_AUS			(GPIOA -> BSRR = (1U<<16))
+#define IN2_AN			(GPIOA -> BSRR = (1U<<1))
+#define IN2_AUS			(GPIOA -> BSRR = (1U<<17))
+#define IN3_AN			(GPIOA -> BSRR = (1U<<4))
+#define IN3_AUS			(GPIOA -> BSRR = (1U<<20))
+#define IN4_AN			(GPIOB -> BSRR = (1U<<0))
+#define IN4_AUS			(GPIOB -> BSRR = (1U<<16))
 
 static int stepIndex = 0;
 volatile uint32_t stepDelay_ms = 1;
@@ -34,6 +34,7 @@ uint8_t phase[8][4] = {
 	  {1, 0, 0, 1}   // Schritt 8
 };
 
+// Pattern for Full drive sequence
 /*
 uint8_t phase[4][4] = {
 	  {1, 1, 0, 0},  // Schritt 1
