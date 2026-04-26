@@ -15,7 +15,7 @@ void tim2_Init(void){
 }
 
 
-void motionDelay_ms(uint32_t delayTime){
+void delay_ms(uint32_t delayTime){
 	for(uint32_t i=0; i<delayTime; i++)
 		{
 

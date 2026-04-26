@@ -1,6 +1,6 @@
 ../Src/stepper.c:46:13:step_Output	16	static
-../Src/stepper.c:62:6:StepperInit	8	static
-../Src/stepper.c:84:6:StepperStop	4	static
+../Src/stepper.c:62:6:stepper_init	8	static
+../Src/stepper.c:84:6:stepperStop	4	static
 ../Src/stepper.c:90:13:stepForward	8	static
 ../Src/stepper.c:102:13:stepBackward	8	static
 ../Src/stepper.c:115:6:moveForward	24	static

@@ -11,8 +11,8 @@
 
 #include <stdint.h>
 
-void StepperInit(void);
-void StepperStop(void);
+void stepper_init(void);
+void stepperStop(void);
 void moveForward(uint16_t steps, uint32_t stepDelay_ms);
 void moveBackward(uint16_t steps, uint32_t stepDelay_ms);
 

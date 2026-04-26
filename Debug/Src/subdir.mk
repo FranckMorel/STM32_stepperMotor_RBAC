@@ -5,32 +5,38 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Src/display.c \
+../Src/font.c \
 ../Src/main.c \
 ../Src/motor_control.c \
+../Src/spi.c \
 ../Src/stepper.c \
 ../Src/syscalls.c \
 ../Src/sysmem.c \
+../Src/tft.c \
 ../Src/timer.c \
 ../Src/ui.c 
 
 OBJS += \
-./Src/display.o \
+./Src/font.o \
 ./Src/main.o \
 ./Src/motor_control.o \
+./Src/spi.o \
 ./Src/stepper.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o \
+./Src/tft.o \
 ./Src/timer.o \
 ./Src/ui.o 
 
 C_DEPS += \
-./Src/display.d \
+./Src/font.d \
 ./Src/main.d \
 ./Src/motor_control.d \
+./Src/spi.d \
 ./Src/stepper.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d \
+./Src/tft.d \
 ./Src/timer.d \
 ./Src/ui.d 
 
@@ -42,7 +48,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/display.cyclo ./Src/display.d ./Src/display.o ./Src/display.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/motor_control.cyclo ./Src/motor_control.d ./Src/motor_control.o ./Src/motor_control.su ./Src/stepper.cyclo ./Src/stepper.d ./Src/stepper.o ./Src/stepper.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/timer.cyclo ./Src/timer.d ./Src/timer.o ./Src/timer.su ./Src/ui.cyclo ./Src/ui.d ./Src/ui.o ./Src/ui.su
+	-$(RM) ./Src/font.cyclo ./Src/font.d ./Src/font.o ./Src/font.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/motor_control.cyclo ./Src/motor_control.d ./Src/motor_control.o ./Src/motor_control.su ./Src/spi.cyclo ./Src/spi.d ./Src/spi.o ./Src/spi.su ./Src/stepper.cyclo ./Src/stepper.d ./Src/stepper.o ./Src/stepper.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/tft.cyclo ./Src/tft.d ./Src/tft.o ./Src/tft.su ./Src/timer.cyclo ./Src/timer.d ./Src/timer.o ./Src/timer.su ./Src/ui.cyclo ./Src/ui.d ./Src/ui.o ./Src/ui.su
 
 .PHONY: clean-Src
 

@@ -1,0 +1,5 @@
+../Src/ui.c:39:6:UI_init	1
+../Src/ui.c:44:6:UI_DrawMenu	3
+../Src/ui.c:68:6:UI_NextItem	1
+../Src/ui.c:69:6:UI_PrevItem	1
+../Src/ui.c:70:6:UI_SelectItem	1

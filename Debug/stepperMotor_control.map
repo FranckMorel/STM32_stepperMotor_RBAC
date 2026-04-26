@@ -53,21 +53,35 @@ Discarded input sections
  .ARM.exidx     0x00000000       0x10 C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
  .ARM.attributes
                 0x00000000       0x20 C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
- .group         0x00000000        0xc ./Src/display.o
- .text          0x00000000        0x0 ./Src/display.o
- .data          0x00000000        0x0 ./Src/display.o
- .bss           0x00000000        0x0 ./Src/display.o
- .debug_info    0x00000000       0x22 ./Src/display.o
- .debug_abbrev  0x00000000       0x12 ./Src/display.o
+ .group         0x00000000        0xc ./Src/font.o
+ .group         0x00000000        0xc ./Src/font.o
+ .group         0x00000000        0xc ./Src/font.o
+ .group         0x00000000        0xc ./Src/font.o
+ .group         0x00000000        0xc ./Src/font.o
+ .group         0x00000000        0xc ./Src/font.o
+ .group         0x00000000        0xc ./Src/font.o
+ .text          0x00000000        0x0 ./Src/font.o
+ .data          0x00000000        0x0 ./Src/font.o
+ .bss           0x00000000        0x0 ./Src/font.o
+ .rodata.Font8x16
+                0x00000000      0x600 ./Src/font.o
+ .debug_info    0x00000000       0xbb ./Src/font.o
+ .debug_abbrev  0x00000000       0x72 ./Src/font.o
  .debug_aranges
-                0x00000000       0x18 ./Src/display.o
- .debug_macro   0x00000000       0x11 ./Src/display.o
- .debug_macro   0x00000000      0xac0 ./Src/display.o
- .debug_line    0x00000000       0x31 ./Src/display.o
- .debug_str     0x00000000     0x2e16 ./Src/display.o
- .comment       0x00000000       0x44 ./Src/display.o
+                0x00000000       0x18 ./Src/font.o
+ .debug_macro   0x00000000       0x71 ./Src/font.o
+ .debug_macro   0x00000000      0xac0 ./Src/font.o
+ .debug_macro   0x00000000       0x22 ./Src/font.o
+ .debug_macro   0x00000000       0x8e ./Src/font.o
+ .debug_macro   0x00000000       0x51 ./Src/font.o
+ .debug_macro   0x00000000      0x103 ./Src/font.o
+ .debug_macro   0x00000000       0x6a ./Src/font.o
+ .debug_macro   0x00000000      0x1df ./Src/font.o
+ .debug_line    0x00000000      0x436 ./Src/font.o
+ .debug_str     0x00000000     0x3d4f ./Src/font.o
+ .comment       0x00000000       0x44 ./Src/font.o
  .ARM.attributes
-                0x00000000       0x34 ./Src/display.o
+                0x00000000       0x34 ./Src/font.o
  .group         0x00000000        0xc ./Src/main.o
  .group         0x00000000        0xc ./Src/main.o
  .group         0x00000000        0xc ./Src/main.o
@@ -79,6 +93,12 @@ Discarded input sections
  .data          0x00000000        0x0 ./Src/main.o
  .bss           0x00000000        0x0 ./Src/main.o
  .debug_macro   0x00000000      0xac0 ./Src/main.o
+ .debug_macro   0x00000000       0x22 ./Src/main.o
+ .debug_macro   0x00000000       0x8e ./Src/main.o
+ .debug_macro   0x00000000       0x51 ./Src/main.o
+ .debug_macro   0x00000000      0x103 ./Src/main.o
+ .debug_macro   0x00000000       0x6a ./Src/main.o
+ .debug_macro   0x00000000      0x1df ./Src/main.o
  .group         0x00000000        0xc ./Src/motor_control.o
  .group         0x00000000        0xc ./Src/motor_control.o
  .group         0x00000000        0xc ./Src/motor_control.o
@@ -95,7 +115,7 @@ Discarded input sections
                 0x00000000        0x1 ./Src/motor_control.o
  .bss.currentState
                 0x00000000        0x1 ./Src/motor_control.o
- .data.adminSteps
+ .bss.adminSteps
                 0x00000000        0x2 ./Src/motor_control.o
  .data.adminDelayMs
                 0x00000000        0x4 ./Src/motor_control.o
@@ -142,11 +162,67 @@ Discarded input sections
  .debug_macro   0x00000000       0x6a ./Src/motor_control.o
  .debug_macro   0x00000000      0x1df ./Src/motor_control.o
  .debug_line    0x00000000      0x59c ./Src/motor_control.o
- .debug_str     0x00000000     0x3ffe ./Src/motor_control.o
+ .debug_str     0x00000000     0x3fff ./Src/motor_control.o
  .comment       0x00000000       0x44 ./Src/motor_control.o
  .debug_frame   0x00000000      0x1c8 ./Src/motor_control.o
  .ARM.attributes
                 0x00000000       0x34 ./Src/motor_control.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .group         0x00000000        0xc ./Src/spi.o
+ .text          0x00000000        0x0 ./Src/spi.o
+ .data          0x00000000        0x0 ./Src/spi.o
+ .bss           0x00000000        0x0 ./Src/spi.o
+ .text.spi_gpio_Init
+                0x00000000       0xcc ./Src/spi.o
+ .text.spi1_config
+                0x00000000       0xa4 ./Src/spi.o
+ .text.spi1_transmit
+                0x00000000       0x70 ./Src/spi.o
+ .text.spi1_recieve
+                0x00000000       0x4c ./Src/spi.o
+ .text.cs_enable
+                0x00000000       0x1c ./Src/spi.o
+ .text.cs_disable
+                0x00000000       0x1c ./Src/spi.o
+ .debug_info    0x00000000      0x430 ./Src/spi.o
+ .debug_abbrev  0x00000000      0x111 ./Src/spi.o
+ .debug_aranges
+                0x00000000       0x48 ./Src/spi.o
+ .debug_rnglists
+                0x00000000       0x33 ./Src/spi.o
+ .debug_macro   0x00000000      0x113 ./Src/spi.o
+ .debug_macro   0x00000000      0xac0 ./Src/spi.o
+ .debug_macro   0x00000000       0x28 ./Src/spi.o
+ .debug_macro   0x00000000       0x22 ./Src/spi.o
+ .debug_macro   0x00000000       0x8e ./Src/spi.o
+ .debug_macro   0x00000000       0x51 ./Src/spi.o
+ .debug_macro   0x00000000      0x103 ./Src/spi.o
+ .debug_macro   0x00000000       0x6a ./Src/spi.o
+ .debug_macro   0x00000000      0x1df ./Src/spi.o
+ .debug_macro   0x00000000       0x1c ./Src/spi.o
+ .debug_macro   0x00000000       0x22 ./Src/spi.o
+ .debug_macro   0x00000000       0xd9 ./Src/spi.o
+ .debug_macro   0x00000000     0x102d ./Src/spi.o
+ .debug_macro   0x00000000      0x11f ./Src/spi.o
+ .debug_macro   0x00000000     0xb850 ./Src/spi.o
+ .debug_line    0x00000000      0x738 ./Src/spi.o
+ .debug_str     0x00000000    0x4efe2 ./Src/spi.o
+ .comment       0x00000000       0x44 ./Src/spi.o
+ .debug_frame   0x00000000       0xe0 ./Src/spi.o
+ .ARM.attributes
+                0x00000000       0x34 ./Src/spi.o
  .group         0x00000000        0xc ./Src/stepper.o
  .group         0x00000000        0xc ./Src/stepper.o
  .group         0x00000000        0xc ./Src/stepper.o
@@ -167,12 +243,19 @@ Discarded input sections
  .data.stepDelay_ms
                 0x00000000        0x4 ./Src/stepper.o
  .debug_macro   0x00000000      0xac0 ./Src/stepper.o
+ .debug_macro   0x00000000       0x28 ./Src/stepper.o
  .debug_macro   0x00000000       0x22 ./Src/stepper.o
  .debug_macro   0x00000000       0x8e ./Src/stepper.o
  .debug_macro   0x00000000       0x51 ./Src/stepper.o
  .debug_macro   0x00000000      0x103 ./Src/stepper.o
  .debug_macro   0x00000000       0x6a ./Src/stepper.o
  .debug_macro   0x00000000      0x1df ./Src/stepper.o
+ .debug_macro   0x00000000       0x1c ./Src/stepper.o
+ .debug_macro   0x00000000       0x22 ./Src/stepper.o
+ .debug_macro   0x00000000       0xd9 ./Src/stepper.o
+ .debug_macro   0x00000000     0x102d ./Src/stepper.o
+ .debug_macro   0x00000000      0x11f ./Src/stepper.o
+ .debug_macro   0x00000000     0xb850 ./Src/stepper.o
  .group         0x00000000        0xc ./Src/syscalls.o
  .group         0x00000000        0xc ./Src/syscalls.o
  .group         0x00000000        0xc ./Src/syscalls.o
@@ -371,6 +454,70 @@ Discarded input sections
  .debug_frame   0x00000000       0x34 ./Src/sysmem.o
  .ARM.attributes
                 0x00000000       0x34 ./Src/sysmem.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .group         0x00000000        0xc ./Src/tft.o
+ .text          0x00000000        0x0 ./Src/tft.o
+ .data          0x00000000        0x0 ./Src/tft.o
+ .bss           0x00000000        0x0 ./Src/tft.o
+ .text.tft_write_cmd
+                0x00000000       0x30 ./Src/tft.o
+ .text.tft_write_data
+                0x00000000       0x30 ./Src/tft.o
+ .text.tft_write_data16
+                0x00000000       0x2e ./Src/tft.o
+ .text.tft_reset
+                0x00000000       0x28 ./Src/tft.o
+ .text.tft_Init
+                0x00000000       0x48 ./Src/tft.o
+ .text.tft_set_window
+                0x00000000       0x98 ./Src/tft.o
+ .text.tft_draw_char
+                0x00000000       0xa8 ./Src/tft.o
+ .text.tft_draw_string
+                0x00000000       0x5a ./Src/tft.o
+ .text.tft_testFullScreenColor
+                0x00000000       0x3e ./Src/tft.o
+ .debug_info    0x00000000      0x3f5 ./Src/tft.o
+ .debug_abbrev  0x00000000      0x190 ./Src/tft.o
+ .debug_aranges
+                0x00000000       0x60 ./Src/tft.o
+ .debug_rnglists
+                0x00000000       0x45 ./Src/tft.o
+ .debug_macro   0x00000000       0xea ./Src/tft.o
+ .debug_macro   0x00000000      0xac0 ./Src/tft.o
+ .debug_macro   0x00000000       0x28 ./Src/tft.o
+ .debug_macro   0x00000000       0x22 ./Src/tft.o
+ .debug_macro   0x00000000       0x8e ./Src/tft.o
+ .debug_macro   0x00000000       0x51 ./Src/tft.o
+ .debug_macro   0x00000000      0x103 ./Src/tft.o
+ .debug_macro   0x00000000       0x6a ./Src/tft.o
+ .debug_macro   0x00000000      0x1df ./Src/tft.o
+ .debug_macro   0x00000000       0x1c ./Src/tft.o
+ .debug_macro   0x00000000       0x22 ./Src/tft.o
+ .debug_macro   0x00000000       0xd9 ./Src/tft.o
+ .debug_macro   0x00000000     0x102d ./Src/tft.o
+ .debug_macro   0x00000000      0x11f ./Src/tft.o
+ .debug_macro   0x00000000     0xb850 ./Src/tft.o
+ .debug_macro   0x00000000       0x94 ./Src/tft.o
+ .debug_line    0x00000000      0x74a ./Src/tft.o
+ .debug_str     0x00000000    0x4f025 ./Src/tft.o
+ .comment       0x00000000       0x44 ./Src/tft.o
+ .debug_frame   0x00000000      0x150 ./Src/tft.o
+ .ARM.attributes
+                0x00000000       0x34 ./Src/tft.o
  .group         0x00000000        0xc ./Src/timer.o
  .group         0x00000000        0xc ./Src/timer.o
  .group         0x00000000        0xc ./Src/timer.o
@@ -403,18 +550,53 @@ Discarded input sections
  .debug_macro   0x00000000      0x11f ./Src/timer.o
  .debug_macro   0x00000000     0xb850 ./Src/timer.o
  .group         0x00000000        0xc ./Src/ui.o
+ .group         0x00000000        0xc ./Src/ui.o
+ .group         0x00000000        0xc ./Src/ui.o
+ .group         0x00000000        0xc ./Src/ui.o
+ .group         0x00000000        0xc ./Src/ui.o
+ .group         0x00000000        0xc ./Src/ui.o
+ .group         0x00000000        0xc ./Src/ui.o
+ .group         0x00000000        0xc ./Src/ui.o
  .text          0x00000000        0x0 ./Src/ui.o
  .data          0x00000000        0x0 ./Src/ui.o
  .bss           0x00000000        0x0 ./Src/ui.o
- .debug_info    0x00000000       0x22 ./Src/ui.o
- .debug_abbrev  0x00000000       0x12 ./Src/ui.o
+ .bss.current_item
+                0x00000000        0x1 ./Src/ui.o
+ .rodata        0x00000000       0x5e ./Src/ui.o
+ .data.hauptMenu_items
+                0x00000000       0x10 ./Src/ui.o
+ .data.modeMenu_items
+                0x00000000        0xc ./Src/ui.o
+ .data.statusMenu_items
+                0x00000000        0xc ./Src/ui.o
+ .text.UI_init  0x00000000        0xe ./Src/ui.o
+ .text.UI_DrawMenu
+                0x00000000       0xcc ./Src/ui.o
+ .text.UI_NextItem
+                0x00000000        0xe ./Src/ui.o
+ .text.UI_PrevItem
+                0x00000000        0xe ./Src/ui.o
+ .text.UI_SelectItem
+                0x00000000        0xe ./Src/ui.o
+ .debug_info    0x00000000      0x1f6 ./Src/ui.o
+ .debug_abbrev  0x00000000       0xf0 ./Src/ui.o
  .debug_aranges
-                0x00000000       0x18 ./Src/ui.o
- .debug_macro   0x00000000       0x11 ./Src/ui.o
+                0x00000000       0x40 ./Src/ui.o
+ .debug_rnglists
+                0x00000000       0x2c ./Src/ui.o
+ .debug_macro   0x00000000       0x76 ./Src/ui.o
  .debug_macro   0x00000000      0xac0 ./Src/ui.o
- .debug_line    0x00000000       0x2c ./Src/ui.o
- .debug_str     0x00000000     0x2e11 ./Src/ui.o
+ .debug_macro   0x00000000       0x22 ./Src/ui.o
+ .debug_macro   0x00000000       0x8e ./Src/ui.o
+ .debug_macro   0x00000000       0x51 ./Src/ui.o
+ .debug_macro   0x00000000      0x103 ./Src/ui.o
+ .debug_macro   0x00000000       0x6a ./Src/ui.o
+ .debug_macro   0x00000000      0x1df ./Src/ui.o
+ .debug_macro   0x00000000       0x94 ./Src/ui.o
+ .debug_line    0x00000000      0x4aa ./Src/ui.o
+ .debug_str     0x00000000     0x3fb5 ./Src/ui.o
  .comment       0x00000000       0x44 ./Src/ui.o
+ .debug_frame   0x00000000       0xb8 ./Src/ui.o
  .ARM.attributes
                 0x00000000       0x34 ./Src/ui.o
  .text          0x00000000       0x14 ./Startup/startup_stm32f401retx.o
@@ -660,12 +842,14 @@ Linker script and memory map
 LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crti.o
 LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
-LOAD ./Src/display.o
+LOAD ./Src/font.o
 LOAD ./Src/main.o
 LOAD ./Src/motor_control.o
+LOAD ./Src/spi.o
 LOAD ./Src/stepper.o
 LOAD ./Src/syscalls.o
 LOAD ./Src/sysmem.o
+LOAD ./Src/tft.o
 LOAD ./Src/timer.o
 LOAD ./Src/ui.o
 LOAD ./Startup/startup_stm32f401retx.o
@@ -710,12 +894,12 @@ LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  *fill*         0x08000226        0x2 
  .text.step_Output
                 0x08000228       0x98 ./Src/stepper.o
- .text.StepperInit
+ .text.stepper_init
                 0x080002c0       0xa0 ./Src/stepper.o
-                0x080002c0                StepperInit
- .text.StepperStop
+                0x080002c0                stepper_init
+ .text.stepperStop
                 0x08000360       0x38 ./Src/stepper.o
-                0x08000360                StepperStop
+                0x08000360                stepperStop
  .text.stepForward
                 0x08000398       0x30 ./Src/stepper.o
  .text.stepBackward
@@ -729,9 +913,9 @@ LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .text.tim2_Init
                 0x08000460       0x50 ./Src/timer.o
                 0x08000460                tim2_Init
- .text.motionDelay_ms
+ .text.delay_ms
                 0x080004b0       0x4a ./Src/timer.o
-                0x080004b0                motionDelay_ms
+                0x080004b0                delay_ms
  *fill*         0x080004fa        0x2 
  .text.Reset_Handler
                 0x080004fc       0x50 ./Startup/startup_stm32f401retx.o
@@ -982,23 +1166,10 @@ LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_rnglists
                 0x00000065       0x19 ./Startup/startup_stm32f401retx.o
 
-.debug_macro    0x00000000     0xd14d
+.debug_macro    0x00000000      0x225
  .debug_macro   0x00000000       0x77 ./Src/main.o
- .debug_macro   0x00000077       0x22 ./Src/main.o
- .debug_macro   0x00000099       0x8e ./Src/main.o
- .debug_macro   0x00000127       0x51 ./Src/main.o
- .debug_macro   0x00000178      0x103 ./Src/main.o
- .debug_macro   0x0000027b       0x6a ./Src/main.o
- .debug_macro   0x000002e5      0x1df ./Src/main.o
- .debug_macro   0x000004c4       0xef ./Src/stepper.o
- .debug_macro   0x000005b3       0x28 ./Src/stepper.o
- .debug_macro   0x000005db       0x1c ./Src/stepper.o
- .debug_macro   0x000005f7       0x22 ./Src/stepper.o
- .debug_macro   0x00000619       0xd9 ./Src/stepper.o
- .debug_macro   0x000006f2     0x102d ./Src/stepper.o
- .debug_macro   0x0000171f      0x11f ./Src/stepper.o
- .debug_macro   0x0000183e     0xb850 ./Src/stepper.o
- .debug_macro   0x0000d08e       0xbf ./Src/timer.o
+ .debug_macro   0x00000077       0xef ./Src/stepper.o
+ .debug_macro   0x00000166       0xbf ./Src/timer.o
 
 .debug_line     0x00000000     0x119d
  .debug_line    0x00000000      0x464 ./Src/main.o
@@ -1006,14 +1177,14 @@ LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_line    0x00000b44      0x5de ./Src/timer.o
  .debug_line    0x00001122       0x7b ./Startup/startup_stm32f401retx.o
 
-.debug_str      0x00000000    0x4ef82
- .debug_str     0x00000000     0x3c55 ./Src/main.o
-                               0x3dca (size before relaxing)
- .debug_str     0x00003c55    0x4b290 ./Src/stepper.o
-                              0x4f02c (size before relaxing)
- .debug_str     0x0004eee5       0x5e ./Src/timer.o
-                              0x4eeaa (size before relaxing)
- .debug_str     0x0004ef43       0x3f ./Startup/startup_stm32f401retx.o
+.debug_str      0x00000000    0x4ef85
+ .debug_str     0x00000000     0x3c50 ./Src/main.o
+                               0x3dc5 (size before relaxing)
+ .debug_str     0x00003c50    0x4b298 ./Src/stepper.o
+                              0x4f02f (size before relaxing)
+ .debug_str     0x0004eee8       0x5e ./Src/timer.o
+                              0x4eea4 (size before relaxing)
+ .debug_str     0x0004ef46       0x3f ./Startup/startup_stm32f401retx.o
                                  0x8a (size before relaxing)
 
 .comment        0x00000000       0x43

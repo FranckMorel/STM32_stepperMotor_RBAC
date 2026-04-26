@@ -59,7 +59,7 @@ static void step_Output(int stepIndex){
 
 }
 
-void StepperInit(void){
+void stepper_init(void){
 
 	RCC -> AHB1ENR |= (1<<0);
 	RCC -> AHB1ENR |= (1<<1);
@@ -81,7 +81,7 @@ void StepperInit(void){
 
 }
 
-void StepperStop(void){
+void stepperStop(void){
 
 	IN1_AUS; IN2_AUS; IN3_AUS; IN4_AUS;
 
@@ -116,7 +116,7 @@ void moveForward(uint16_t steps, uint32_t stepDelay_ms){
   for(uint16_t i = 0; i < steps; i++){
 
 	    stepForward();
-	    motionDelay_ms(stepDelay_ms);
+	    delay_ms(stepDelay_ms);
      }
 
 }
@@ -125,7 +125,7 @@ void moveBackward(uint16_t steps, uint32_t stepDelay_ms){
 	for(uint16_t i = 0; i < steps; i++){
 
 		stepBackward();
-		motionDelay_ms(stepDelay_ms);
+		delay_ms(stepDelay_ms);
 	  }
 }
 

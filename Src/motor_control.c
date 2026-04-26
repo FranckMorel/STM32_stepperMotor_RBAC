@@ -26,13 +26,13 @@ static const MotorProfile_t userProfiles[] =
 
 void MotorControl_Init(void){
 
-	StepperInit();
+	stepper_init();
 	currentMode = MODE_NORMAL;
 	currentDirection = DIR_FORWARD;
 }
 
 void MotorControl_Stop(void){
-	StepperStop();
+	stepperStop();
 }
 
 

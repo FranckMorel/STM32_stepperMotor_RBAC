@@ -12,7 +12,7 @@
 
 void tim2_Init(void);
 //void speedDelay_ms(uint32_t delayTime);
-void motionDelay_ms(uint32_t delayTime);
+void delay_ms(uint32_t delayTime);
 
 
 #endif /* TIMER_H_ */

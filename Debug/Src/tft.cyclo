@@ -1,0 +1,9 @@
+../Src/tft.c:15:6:tft_write_cmd	1
+../Src/tft.c:24:6:tft_write_data	1
+../Src/tft.c:34:6:tft_write_data16	1
+../Src/tft.c:42:6:tft_reset	1
+../Src/tft.c:51:6:tft_Init	1
+../Src/tft.c:90:6:tft_set_window	1
+../Src/tft.c:110:6:tft_draw_char	6
+../Src/tft.c:129:6:tft_draw_string	3
+../Src/tft.c:142:6:tft_testFullScreenColor	2

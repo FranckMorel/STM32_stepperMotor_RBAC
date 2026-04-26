@@ -35,17 +35,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_rnglists 0000007e  00000000  00000000  00002de8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0000d14d  00000000  00000000  00002e66  2**0
+ 16 .debug_macro  00000225  00000000  00000000  00002e66  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000119d  00000000  00000000  0000ffb3  2**0
+ 17 .debug_line   0000119d  00000000  00000000  0000308b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0004ef82  00000000  00000000  00011150  2**0
+ 18 .debug_str    0004ef85  00000000  00000000  00004228  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000600d2  2**0
+ 19 .comment      00000043  00000000  00000000  000531ad  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000001a8  00000000  00000000  00060118  2**2
+ 20 .debug_frame  000001a8  00000000  00000000  000531f0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000006e  00000000  00000000  000602c0  2**0
+ 21 .debug_line_str 0000006e  00000000  00000000  00053398  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -88,8 +88,8 @@ int main(void)
  80001d4:	b580      	push	{r7, lr}
  80001d6:	b082      	sub	sp, #8
  80001d8:	af00      	add	r7, sp, #0
-    StepperInit();
- 80001da:	f000 f871 	bl	80002c0 <StepperInit>
+    stepper_init();
+ 80001da:	f000 f871 	bl	80002c0 <stepper_init>
     tim2_Init();
  80001de:	f000 f93f 	bl	8000460 <tim2_Init>
     uint8_t i;
@@ -105,18 +105,18 @@ int main(void)
  80001e8:	2101      	movs	r1, #1
  80001ea:	f44f 6000 	mov.w	r0, #2048	@ 0x800
  80001ee:	f000 f903 	bl	80003f8 <moveForward>
-    	motionDelay_ms(200);
+    	delay_ms(200);
  80001f2:	20c8      	movs	r0, #200	@ 0xc8
- 80001f4:	f000 f95c 	bl	80004b0 <motionDelay_ms>
+ 80001f4:	f000 f95c 	bl	80004b0 <delay_ms>
         //for(volatile int i=0; i<1500000; i++){} // vorhin Delay mit Schleife
 
         moveBackward(2048,1);
  80001f8:	2101      	movs	r1, #1
  80001fa:	f44f 6000 	mov.w	r0, #2048	@ 0x800
  80001fe:	f000 f915 	bl	800042c <moveBackward>
-        motionDelay_ms(200);
+        delay_ms(200);
  8000202:	20c8      	movs	r0, #200	@ 0xc8
- 8000204:	f000 f954 	bl	80004b0 <motionDelay_ms>
+ 8000204:	f000 f954 	bl	80004b0 <delay_ms>
     	for(i=0; i<4; i++){
  8000208:	79fb      	ldrb	r3, [r7, #7]
  800020a:	3301      	adds	r3, #1
@@ -127,11 +127,11 @@ int main(void)
         //for(volatile int i=0; i<1500000; i++){}
     	}
 
-    	StepperStop();
- 8000214:	f000 f8a4 	bl	8000360 <StepperStop>
-    	motionDelay_ms(2000);
+    	stepperStop();
+ 8000214:	f000 f8a4 	bl	8000360 <stepperStop>
+    	delay_ms(2000);
  8000218:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
- 800021c:	f000 f948 	bl	80004b0 <motionDelay_ms>
+ 800021c:	f000 f948 	bl	80004b0 <delay_ms>
     	i=0;
  8000220:	2300      	movs	r3, #0
  8000222:	71fb      	strb	r3, [r7, #7]
@@ -230,83 +230,83 @@ static void step_Output(int stepIndex){
  80002b8:	40020000 	.word	0x40020000
  80002bc:	40020400 	.word	0x40020400
 
-080002c0 <StepperInit>:
+080002c0 <stepper_init>:
 
-void StepperInit(void){
+void stepper_init(void){
  80002c0:	b580      	push	{r7, lr}
  80002c2:	af00      	add	r7, sp, #0
 
 	RCC -> AHB1ENR |= (1<<0);
- 80002c4:	4b22      	ldr	r3, [pc, #136]	@ (8000350 <StepperInit+0x90>)
+ 80002c4:	4b22      	ldr	r3, [pc, #136]	@ (8000350 <stepper_init+0x90>)
  80002c6:	6b1b      	ldr	r3, [r3, #48]	@ 0x30
- 80002c8:	4a21      	ldr	r2, [pc, #132]	@ (8000350 <StepperInit+0x90>)
+ 80002c8:	4a21      	ldr	r2, [pc, #132]	@ (8000350 <stepper_init+0x90>)
  80002ca:	f043 0301 	orr.w	r3, r3, #1
  80002ce:	6313      	str	r3, [r2, #48]	@ 0x30
 	RCC -> AHB1ENR |= (1<<1);
- 80002d0:	4b1f      	ldr	r3, [pc, #124]	@ (8000350 <StepperInit+0x90>)
+ 80002d0:	4b1f      	ldr	r3, [pc, #124]	@ (8000350 <stepper_init+0x90>)
  80002d2:	6b1b      	ldr	r3, [r3, #48]	@ 0x30
- 80002d4:	4a1e      	ldr	r2, [pc, #120]	@ (8000350 <StepperInit+0x90>)
+ 80002d4:	4a1e      	ldr	r2, [pc, #120]	@ (8000350 <stepper_init+0x90>)
  80002d6:	f043 0302 	orr.w	r3, r3, #2
  80002da:	6313      	str	r3, [r2, #48]	@ 0x30
 
 	GPIOA -> MODER &= ~(3U << (0*2));
- 80002dc:	4b1d      	ldr	r3, [pc, #116]	@ (8000354 <StepperInit+0x94>)
+ 80002dc:	4b1d      	ldr	r3, [pc, #116]	@ (8000354 <stepper_init+0x94>)
  80002de:	681b      	ldr	r3, [r3, #0]
- 80002e0:	4a1c      	ldr	r2, [pc, #112]	@ (8000354 <StepperInit+0x94>)
+ 80002e0:	4a1c      	ldr	r2, [pc, #112]	@ (8000354 <stepper_init+0x94>)
  80002e2:	f023 0303 	bic.w	r3, r3, #3
  80002e6:	6013      	str	r3, [r2, #0]
 	GPIOA -> MODER |=  (1U <<(0*2));
- 80002e8:	4b1a      	ldr	r3, [pc, #104]	@ (8000354 <StepperInit+0x94>)
+ 80002e8:	4b1a      	ldr	r3, [pc, #104]	@ (8000354 <stepper_init+0x94>)
  80002ea:	681b      	ldr	r3, [r3, #0]
- 80002ec:	4a19      	ldr	r2, [pc, #100]	@ (8000354 <StepperInit+0x94>)
+ 80002ec:	4a19      	ldr	r2, [pc, #100]	@ (8000354 <stepper_init+0x94>)
  80002ee:	f043 0301 	orr.w	r3, r3, #1
  80002f2:	6013      	str	r3, [r2, #0]
 
 	GPIOA -> MODER &= ~(3U << (1*2));
- 80002f4:	4b17      	ldr	r3, [pc, #92]	@ (8000354 <StepperInit+0x94>)
+ 80002f4:	4b17      	ldr	r3, [pc, #92]	@ (8000354 <stepper_init+0x94>)
  80002f6:	681b      	ldr	r3, [r3, #0]
- 80002f8:	4a16      	ldr	r2, [pc, #88]	@ (8000354 <StepperInit+0x94>)
+ 80002f8:	4a16      	ldr	r2, [pc, #88]	@ (8000354 <stepper_init+0x94>)
  80002fa:	f023 030c 	bic.w	r3, r3, #12
  80002fe:	6013      	str	r3, [r2, #0]
 	GPIOA -> MODER |=  (1U <<(1*2));
- 8000300:	4b14      	ldr	r3, [pc, #80]	@ (8000354 <StepperInit+0x94>)
+ 8000300:	4b14      	ldr	r3, [pc, #80]	@ (8000354 <stepper_init+0x94>)
  8000302:	681b      	ldr	r3, [r3, #0]
- 8000304:	4a13      	ldr	r2, [pc, #76]	@ (8000354 <StepperInit+0x94>)
+ 8000304:	4a13      	ldr	r2, [pc, #76]	@ (8000354 <stepper_init+0x94>)
  8000306:	f043 0304 	orr.w	r3, r3, #4
  800030a:	6013      	str	r3, [r2, #0]
 
 	GPIOA -> MODER &= ~(3U << (4*2));
- 800030c:	4b11      	ldr	r3, [pc, #68]	@ (8000354 <StepperInit+0x94>)
+ 800030c:	4b11      	ldr	r3, [pc, #68]	@ (8000354 <stepper_init+0x94>)
  800030e:	681b      	ldr	r3, [r3, #0]
- 8000310:	4a10      	ldr	r2, [pc, #64]	@ (8000354 <StepperInit+0x94>)
+ 8000310:	4a10      	ldr	r2, [pc, #64]	@ (8000354 <stepper_init+0x94>)
  8000312:	f423 7340 	bic.w	r3, r3, #768	@ 0x300
  8000316:	6013      	str	r3, [r2, #0]
 	GPIOA -> MODER |=  (1U <<(4*2));
- 8000318:	4b0e      	ldr	r3, [pc, #56]	@ (8000354 <StepperInit+0x94>)
+ 8000318:	4b0e      	ldr	r3, [pc, #56]	@ (8000354 <stepper_init+0x94>)
  800031a:	681b      	ldr	r3, [r3, #0]
- 800031c:	4a0d      	ldr	r2, [pc, #52]	@ (8000354 <StepperInit+0x94>)
+ 800031c:	4a0d      	ldr	r2, [pc, #52]	@ (8000354 <stepper_init+0x94>)
  800031e:	f443 7380 	orr.w	r3, r3, #256	@ 0x100
  8000322:	6013      	str	r3, [r2, #0]
 
 	GPIOB -> MODER &= ~(3U << (0*2));
- 8000324:	4b0c      	ldr	r3, [pc, #48]	@ (8000358 <StepperInit+0x98>)
+ 8000324:	4b0c      	ldr	r3, [pc, #48]	@ (8000358 <stepper_init+0x98>)
  8000326:	681b      	ldr	r3, [r3, #0]
- 8000328:	4a0b      	ldr	r2, [pc, #44]	@ (8000358 <StepperInit+0x98>)
+ 8000328:	4a0b      	ldr	r2, [pc, #44]	@ (8000358 <stepper_init+0x98>)
  800032a:	f023 0303 	bic.w	r3, r3, #3
  800032e:	6013      	str	r3, [r2, #0]
 	GPIOB -> MODER |=  (1U <<(0*2));
- 8000330:	4b09      	ldr	r3, [pc, #36]	@ (8000358 <StepperInit+0x98>)
+ 8000330:	4b09      	ldr	r3, [pc, #36]	@ (8000358 <stepper_init+0x98>)
  8000332:	681b      	ldr	r3, [r3, #0]
- 8000334:	4a08      	ldr	r2, [pc, #32]	@ (8000358 <StepperInit+0x98>)
+ 8000334:	4a08      	ldr	r2, [pc, #32]	@ (8000358 <stepper_init+0x98>)
  8000336:	f043 0301 	orr.w	r3, r3, #1
  800033a:	6013      	str	r3, [r2, #0]
 
 	stepIndex = 0;
- 800033c:	4b07      	ldr	r3, [pc, #28]	@ (800035c <StepperInit+0x9c>)
+ 800033c:	4b07      	ldr	r3, [pc, #28]	@ (800035c <stepper_init+0x9c>)
  800033e:	2200      	movs	r2, #0
  8000340:	601a      	str	r2, [r3, #0]
 	step_Output(stepIndex);
- 8000342:	4b06      	ldr	r3, [pc, #24]	@ (800035c <StepperInit+0x9c>)
+ 8000342:	4b06      	ldr	r3, [pc, #24]	@ (800035c <stepper_init+0x9c>)
  8000344:	681b      	ldr	r3, [r3, #0]
  8000346:	4618      	mov	r0, r3
  8000348:	f7ff ff6e 	bl	8000228 <step_Output>
@@ -319,23 +319,23 @@ void StepperInit(void){
  8000358:	40020400 	.word	0x40020400
  800035c:	2000003c 	.word	0x2000003c
 
-08000360 <StepperStop>:
+08000360 <stepperStop>:
 
-void StepperStop(void){
+void stepperStop(void){
  8000360:	b480      	push	{r7}
  8000362:	af00      	add	r7, sp, #0
 
 	IN1_AUS; IN2_AUS; IN3_AUS; IN4_AUS;
- 8000364:	4b0a      	ldr	r3, [pc, #40]	@ (8000390 <StepperStop+0x30>)
+ 8000364:	4b0a      	ldr	r3, [pc, #40]	@ (8000390 <stepperStop+0x30>)
  8000366:	f44f 3280 	mov.w	r2, #65536	@ 0x10000
  800036a:	619a      	str	r2, [r3, #24]
- 800036c:	4b08      	ldr	r3, [pc, #32]	@ (8000390 <StepperStop+0x30>)
+ 800036c:	4b08      	ldr	r3, [pc, #32]	@ (8000390 <stepperStop+0x30>)
  800036e:	f44f 3200 	mov.w	r2, #131072	@ 0x20000
  8000372:	619a      	str	r2, [r3, #24]
- 8000374:	4b06      	ldr	r3, [pc, #24]	@ (8000390 <StepperStop+0x30>)
+ 8000374:	4b06      	ldr	r3, [pc, #24]	@ (8000390 <stepperStop+0x30>)
  8000376:	f44f 1280 	mov.w	r2, #1048576	@ 0x100000
  800037a:	619a      	str	r2, [r3, #24]
- 800037c:	4b05      	ldr	r3, [pc, #20]	@ (8000394 <StepperStop+0x34>)
+ 800037c:	4b05      	ldr	r3, [pc, #20]	@ (8000394 <stepperStop+0x34>)
  800037e:	f44f 3280 	mov.w	r2, #65536	@ 0x10000
  8000382:	619a      	str	r2, [r3, #24]
 
@@ -437,9 +437,9 @@ void moveForward(uint16_t steps, uint32_t stepDelay_ms){
 
 	    stepForward();
  800040a:	f7ff ffc5 	bl	8000398 <stepForward>
-	    motionDelay_ms(stepDelay_ms);
+	    delay_ms(stepDelay_ms);
  800040e:	6838      	ldr	r0, [r7, #0]
- 8000410:	f000 f84e 	bl	80004b0 <motionDelay_ms>
+ 8000410:	f000 f84e 	bl	80004b0 <delay_ms>
   for(uint16_t i = 0; i < steps; i++){
  8000414:	89fb      	ldrh	r3, [r7, #14]
  8000416:	3301      	adds	r3, #1
@@ -473,9 +473,9 @@ void moveBackward(uint16_t steps, uint32_t stepDelay_ms){
 
 		stepBackward();
  800043e:	f7ff ffc3 	bl	80003c8 <stepBackward>
-		motionDelay_ms(stepDelay_ms);
+		delay_ms(stepDelay_ms);
  8000442:	6838      	ldr	r0, [r7, #0]
- 8000444:	f000 f834 	bl	80004b0 <motionDelay_ms>
+ 8000444:	f000 f834 	bl	80004b0 <delay_ms>
 	for(uint16_t i = 0; i < steps; i++){
  8000448:	89fb      	ldrh	r3, [r7, #14]
  800044a:	3301      	adds	r3, #1
@@ -538,10 +538,10 @@ void tim2_Init(void){
  80004aa:	4770      	bx	lr
  80004ac:	40023800 	.word	0x40023800
 
-080004b0 <motionDelay_ms>:
+080004b0 <delay_ms>:
 
 
-void motionDelay_ms(uint32_t delayTime){
+void delay_ms(uint32_t delayTime){
  80004b0:	b480      	push	{r7}
  80004b2:	b085      	sub	sp, #20
  80004b4:	af00      	add	r7, sp, #0
@@ -549,7 +549,7 @@ void motionDelay_ms(uint32_t delayTime){
 	for(uint32_t i=0; i<delayTime; i++)
  80004b8:	2300      	movs	r3, #0
  80004ba:	60fb      	str	r3, [r7, #12]
- 80004bc:	e012      	b.n	80004e4 <motionDelay_ms+0x34>
+ 80004bc:	e012      	b.n	80004e4 <delay_ms+0x34>
 		{
 
 		while(!(TIM2 -> SR & (1U<<0))){}
@@ -558,7 +558,7 @@ void motionDelay_ms(uint32_t delayTime){
  80004c4:	691b      	ldr	r3, [r3, #16]
  80004c6:	f003 0301 	and.w	r3, r3, #1
  80004ca:	2b00      	cmp	r3, #0
- 80004cc:	d0f8      	beq.n	80004c0 <motionDelay_ms+0x10>
+ 80004cc:	d0f8      	beq.n	80004c0 <delay_ms+0x10>
 		   TIM2 -> SR &= ~(1U<<0);
  80004ce:	f04f 4380 	mov.w	r3, #1073741824	@ 0x40000000
  80004d2:	691b      	ldr	r3, [r3, #16]
@@ -572,7 +572,7 @@ void motionDelay_ms(uint32_t delayTime){
  80004e4:	68fa      	ldr	r2, [r7, #12]
  80004e6:	687b      	ldr	r3, [r7, #4]
  80004e8:	429a      	cmp	r2, r3
- 80004ea:	d3e8      	bcc.n	80004be <motionDelay_ms+0xe>
+ 80004ea:	d3e8      	bcc.n	80004be <delay_ms+0xe>
 		}
 }
  80004ec:	bf00      	nop
