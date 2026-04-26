@@ -1,19 +1,19 @@
 /*
  * ui.c
  *
- *  Created on: Apr 25, 2026
+ *  Created on: Apr 27, 2026
  *      Author: Morel
  */
 
-/*Currently testing Display functions on this project to use on the stepperMotor project*/
-
 #include "ui.h"
 #include "tft.h"
+#include "motor_control.h"
 #include <stdint.h>
 
 
+static UiMenu_t currentMenu = UI_MENU_MAIN;
+static uint8_t currentItem = 0;
 
-uint8_t current_item = 0;
 
 const char* hauptMenu_items[] = {
         "Start",
@@ -41,30 +41,122 @@ void UI_init(void){
 
 }
 
-void UI_DrawMenu(void) {
-     // Hintergrund löschen
-     tft_testFullScreenColor(TFT_BLACK);
+void UI_DrawMenu(void)
+{
+    tft_testFullScreenColor(TFT_BLACK);
 
-     // Titel
-     tft_draw_string(20, 10, "Motor Control", TFT_WHITE, TFT_BLACK);
+    const char** items = 0;
+    uint8_t count = 0;
+    const char* title = "";
 
-     // Menü Einträge zeichnen
-     for(int i = 0; i < 4; i++) {
-         uint16_t color = TFT_WHITE;
+    if(currentMenu == UI_MENU_MAIN)
+    {
+        items = hauptMenu_items;
+        count = MAIN_MENU_COUNT;
+        title = "Motor Control";
+    }
+    else if(currentMenu == UI_MENU_MODE)
+    {
+        items = modeMenu_items;
+        count = MODE_MENU_COUNT;
+        title = "Select Mode";
+    }
+    else if(currentMenu == UI_MENU_STATUS)
+    {
+        items = statusMenu_items;
+        count = STATUS_MENU_COUNT;
+        title = "Status";
+    }
 
-         // Aktueller Eintrag wird mit ">" markiert
-         if(i == current_item) {
-             tft_draw_char(10, 40 + i*20, '>', TFT_YELLOW, TFT_BLACK);
-             color = TFT_YELLOW;
-         } else {
-             tft_draw_char(10, 40 + i*20, ' ', TFT_WHITE, TFT_BLACK);
-         }
+    tft_draw_string(20, 10, title, TFT_WHITE, TFT_BLACK);
 
-         tft_draw_string(25, 40 + i*20, hauptMenu_items[i], color, TFT_BLACK);
-     }
- }
+    for(uint8_t i = 0; i < count; i++)
+    {
+        uint16_t color = TFT_WHITE;
+
+        if(i == currentItem)
+        {
+            tft_draw_char(10, 40 + i * 20, '>', TFT_YELLOW, TFT_BLACK);
+            color = TFT_YELLOW;
+        }
+        else
+        {
+            tft_draw_char(10, 40 + i * 20, ' ', TFT_WHITE, TFT_BLACK);
+        }
+
+        tft_draw_string(25, 40 + i * 20, items[i], color, TFT_BLACK);
+    }
+}
 
 
-void UI_NextItem(void){}
-void UI_PrevItem(void){}
-void UI_SelectItem(void){}
+void UI_NextItem(void){
+    uint8_t count = 0;
+
+    switch(currentMenu)
+    {
+        case UI_MENU_MAIN:   count = MAIN_MENU_COUNT; break;
+        case UI_MENU_MODE:   count = MODE_MENU_COUNT; break;
+        case UI_MENU_STATUS: count = STATUS_MENU_COUNT; break;
+    }
+
+    currentItem++;
+
+    if(currentItem >= count)
+        currentItem = 0;
+}
+
+void UI_PrevItem(void){
+	  uint8_t count = 0;
+
+	    switch(currentMenu)
+	    {
+	        case UI_MENU_MAIN:   count = MAIN_MENU_COUNT; break;
+	        case UI_MENU_MODE:   count = MODE_MENU_COUNT; break;
+	        case UI_MENU_STATUS: count = STATUS_MENU_COUNT; break;
+	    }
+
+	    if(currentItem == 0)
+	 	    currentItem = count - 1;
+	    else
+	    	currentItem--;
+
+}
+
+void UI_SelectItem(void){
+
+	 if(currentMenu == UI_MENU_MAIN){
+		 if(currentItem == 0) MotorControl_RunUserMode();
+		 else if(currentItem == 1)	MotorControl_Stop();
+		 else if(currentItem == 2){
+			 currentMenu = UI_MENU_STATUS;
+			 UI_DrawMenu();
+			 currentItem = 0;
+		 }
+		 else if(currentItem == 3){
+			 currentMenu = UI_MENU_MODE;
+			 UI_DrawMenu();
+			 currentItem = 0;
+		 }
+
+	 }
+
+	 else if(currentMenu == UI_MENU_MODE){
+		 if(currentItem == 0) MotorControl_SetMode(MODE_ECO);
+		 else if(currentItem == 1) MotorControl_SetMode(MODE_NORMAL);
+		 else if (currentItem == 2) MotorControl_SetMode(MODE_FAST);
+		 currentMenu = UI_MENU_MODE;
+		 currentItem = 0;
+		 UI_DrawMenu();
+		 currentItem = 0;
+
+	 }
+
+	 else if(currentMenu == UI_MENU_STATUS){
+		 UI_DrawMenu();
+		 tft_draw_char(25, 60, currentMode,TFT_WHITE,TFT_BLACK);
+		 tft_draw_char(25, 60 + 16, currentMode,TFT_WHITE,TFT_BLACK);
+		 tft_draw_char(25, 40 + 16, currentMode,TFT_WHITE,TFT_BLACK);
+
+	 }
+
+}
