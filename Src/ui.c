@@ -27,20 +27,19 @@ const char* modeMenu_items[] = {
         "ECO",
         "NORMAL",
         "FAST",
+		"Back"
   };
 
 const char* statusMenu_items[] = {
         "Mode: ",
         "State: ",
         "Direction: ",
+		"Back"
   };
 
 
 
-void UI_init(void){
-
-
-}
+//void UI_init(void){}
 
 void UI_DrawMenu(void)
 {
@@ -103,6 +102,8 @@ void UI_DrawStatus(void)
 
     tft_draw_string(10, 80, "Dir:", TFT_WHITE, TFT_BLACK);
     tft_draw_string(70, 80, MotorControl_GetDirectionString(), TFT_YELLOW, TFT_BLACK);
+
+    tft_draw_string(10, 100, "Back", TFT_WHITE, TFT_BLACK);
 }
 
 void UI_NextItem(void){
@@ -141,11 +142,15 @@ void UI_PrevItem(void){
 void UI_SelectItem(void){
 
 	 if(currentMenu == UI_MENU_MAIN){
-		 if(currentItem == 0) MotorControl_RunUserMode();
-		 else if(currentItem == 1)	MotorControl_Stop();
+		 if(currentItem == 0){
+			 MotorControl_RunUserMode();
+		 }
+		 else if(currentItem == 1){
+			 MotorControl_Stop();
+		 }
 		 else if(currentItem == 2){
 			 currentMenu = UI_MENU_STATUS;
-			 UI_DrawMenu();
+			 UI_DrawStatus();
 			 currentItem = 0;
 		 }
 		 else if(currentItem == 3){
@@ -157,19 +162,32 @@ void UI_SelectItem(void){
 	 }
 
 	 else if(currentMenu == UI_MENU_MODE){
-		 if(currentItem == 0) MotorControl_SetMode(MODE_ECO);
-		 else if(currentItem == 1) MotorControl_SetMode(MODE_NORMAL);
-		 else if (currentItem == 2) MotorControl_SetMode(MODE_FAST);
-		 currentMenu = UI_MENU_MODE;
-		 currentItem = 0;
-		 UI_DrawMenu();
-		 currentItem = 0;
+		 if(currentItem == 0){
+			 MotorControl_SetMode(MODE_ECO);
+		 }
+		 else if(currentItem == 1) {
+			 MotorControl_SetMode(MODE_NORMAL);
+		 }
+		 else if (currentItem == 2){
+			 MotorControl_SetMode(MODE_FAST);
+		 }
+		 else if(currentItem == 3) {  // "Back"
+		        currentMenu = UI_MENU_MAIN;
+		        currentItem = 0;
+		        UI_DrawMenu();
+		        return;
+		    }
 
 	 }
 
 	 else if(currentMenu == UI_MENU_STATUS){
-		 UI_DrawStatus();
-		 return;
-	 }
 
+		 if(currentItem == 3){
+			 currentMenu = UI_MENU_MAIN;
+			 currentItem = 0;
+		     UI_DrawMenu();
+		     return;
+		 }
+
+	 }
 }
