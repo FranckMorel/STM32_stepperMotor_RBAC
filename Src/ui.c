@@ -16,7 +16,7 @@ static UiMenu_t currentMenu = UI_MENU_MAIN;
 static uint8_t currentItem = 0;
 
 
-const char* hauptMenu_items[] = {
+const char* mainMenu_items[] = {
         "Start",
         "Stop",
         "Status",
@@ -51,7 +51,7 @@ void UI_DrawMenu(void)
 
     if(currentMenu == UI_MENU_MAIN)
     {
-        items = hauptMenu_items;
+        items = mainMenu_items;
         count = MAIN_MENU_COUNT;
         title = "Motor Control";
     }
@@ -103,7 +103,16 @@ void UI_DrawStatus(void)
     tft_draw_string(10, 80, "Dir:", TFT_WHITE, TFT_BLACK);
     tft_draw_string(70, 80, MotorControl_GetDirectionString(), TFT_YELLOW, TFT_BLACK);
 
-    tft_draw_string(10, 100, "Back", TFT_WHITE, TFT_BLACK);
+    if(currentItem == 3)
+     {
+         tft_draw_char(10, 110, '>', TFT_YELLOW, TFT_BLACK);
+         tft_draw_string(25, 110, "Back", TFT_YELLOW, TFT_BLACK);
+     }
+     else
+     {
+         tft_draw_char(10, 110, ' ', TFT_WHITE, TFT_BLACK);
+         tft_draw_string(25, 110, "Back", TFT_WHITE, TFT_BLACK);
+     }
 }
 
 void UI_NextItem(void){
@@ -144,19 +153,21 @@ void UI_SelectItem(void){
 	 if(currentMenu == UI_MENU_MAIN){
 		 if(currentItem == 0){
 			 MotorControl_RunUserMode();
+
 		 }
 		 else if(currentItem == 1){
 			 MotorControl_Stop();
+
 		 }
 		 else if(currentItem == 2){
 			 currentMenu = UI_MENU_STATUS;
-			 UI_DrawStatus();
 			 currentItem = 0;
+			 UI_DrawStatus();
 		 }
 		 else if(currentItem == 3){
 			 currentMenu = UI_MENU_MODE;
-			 UI_DrawMenu();
 			 currentItem = 0;
+			 UI_DrawMenu();
 		 }
 
 	 }
@@ -174,20 +185,14 @@ void UI_SelectItem(void){
 		 else if(currentItem == 3) {  // "Back"
 		        currentMenu = UI_MENU_MAIN;
 		        currentItem = 0;
-		        UI_DrawMenu();
-		        return;
 		    }
+
+		 UI_DrawMenu();
 
 	 }
 
 	 else if(currentMenu == UI_MENU_STATUS){
-
-		 if(currentItem == 3){
-			 currentMenu = UI_MENU_MAIN;
-			 currentItem = 0;
-		     UI_DrawMenu();
-		     return;
-		 }
+		 UI_DrawStatus();
 
 	 }
 }

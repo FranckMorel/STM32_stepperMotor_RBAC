@@ -11,8 +11,8 @@
 #define UI_H_
 
 #define MAIN_MENU_COUNT    4
-#define MODE_MENU_COUNT    3
-#define STATUS_MENU_COUNT  3
+#define MODE_MENU_COUNT    4
+#define STATUS_MENU_COUNT  4
 
 typedef enum {
     UI_MENU_MAIN,
