@@ -1,5 +1,6 @@
-../Src/ui.c:39:6:UI_init	4	static
-../Src/ui.c:44:6:UI_DrawMenu	24	static
-../Src/ui.c:68:6:UI_NextItem	4	static
-../Src/ui.c:69:6:UI_PrevItem	4	static
-../Src/ui.c:70:6:UI_SelectItem	4	static
+../Src/ui.c:40:6:UI_init	4	static
+../Src/ui.c:45:6:UI_DrawMenu	32	static
+../Src/ui.c:92:6:UI_DrawStatus	16	static
+../Src/ui.c:108:6:UI_NextItem	16	static
+../Src/ui.c:124:6:UI_PrevItem	16	static
+../Src/ui.c:141:6:UI_SelectItem	8	static

@@ -9,8 +9,8 @@
 #include <stepper.h>
 
 
-static MotorMode_t currentMode = MODE_NORMAL;
-static MotorDirection_t currentDirection = DIR_FORWARD;
+volatile MotorMode_t currentMode = MODE_NORMAL;
+volatile MotorDirection_t currentDirection = DIR_FORWARD;
 static MotorState_t currentState = MOTOR_IDLE;
 
 static uint16_t adminSteps = 0;
@@ -116,4 +116,37 @@ uint16_t MotorControl_GetAdminSteps(void){
 }
 uint32_t MotorControl_GetAdminDelay(void){
 	return adminDelayMs;
+}
+
+const char* MotorControl_GetModeString(void){
+
+    switch(MotorControl_GetMode())
+    {
+        case MODE_ECO:    return "ECO";
+        case MODE_NORMAL: return "NORMAL";
+        case MODE_FAST:   return "FAST";
+        default:          return "UNKNOWN";
+    }
+}
+
+const char* MotorControl_GetStateString(void){
+
+    switch(MotorControl_GetState())
+    {
+        case MOTOR_IDLE:    return "IDLE";
+        case MOTOR_RUNNING: return "RUNNING";
+        case MOTOR_STOPPED: return "STOPPED";
+        case MOTOR_ERROR:   return "ERROR";
+        default:            return "UNKNOWN";
+    }
+}
+
+const char* MotorControl_GetDirectionString(void){
+
+    switch(MotorControl_GetDirection())
+    {
+        case DIR_FORWARD:  return "FORWARD";
+        case DIR_BACKWARD: return "BACKWARD";
+        default:           return "UNKNOWN";
+    }
 }

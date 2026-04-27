@@ -11,3 +11,6 @@
 ../Src/motor_control.c:110:14:MotorControl_GetState	4	static
 ../Src/motor_control.c:114:10:MotorControl_GetAdminSteps	4	static
 ../Src/motor_control.c:117:10:MotorControl_GetAdminDelay	4	static
+../Src/motor_control.c:121:13:MotorControl_GetModeString	8	static
+../Src/motor_control.c:132:13:MotorControl_GetStateString	8	static
+../Src/motor_control.c:144:13:MotorControl_GetDirectionString	8	static

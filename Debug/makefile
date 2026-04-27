@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := stepperMotor_control
+BUILD_ARTIFACT_NAME := STM32_stepperMotor_RBAC
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-stepperMotor_control.elf \
+STM32_stepperMotor_RBAC.elf \
 
 MAP_FILES += \
-stepperMotor_control.map \
+STM32_stepperMotor_RBAC.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-stepperMotor_control.list \
+STM32_stepperMotor_RBAC.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: stepperMotor_control.elf secondary-outputs
+main-build: STM32_stepperMotor_RBAC.elf secondary-outputs
 
 # Tool invocations
-stepperMotor_control.elf stepperMotor_control.map: $(OBJS) $(USER_OBJS) C:\Users\kzvvftre\STM32CubeIDE\workspace_1.16.0\stepperMotor_control\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "stepperMotor_control.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kzvvftre\STM32CubeIDE\workspace_1.16.0\stepperMotor_control\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stepperMotor_control.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+STM32_stepperMotor_RBAC.elf STM32_stepperMotor_RBAC.map: $(OBJS) $(USER_OBJS) C:\Users\kzvvftre\STM32CubeIDE\workspace_1.16.0\stepperMotor_control\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "STM32_stepperMotor_RBAC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kzvvftre\STM32CubeIDE\workspace_1.16.0\stepperMotor_control\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_stepperMotor_RBAC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-stepperMotor_control.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "stepperMotor_control.list"
+STM32_stepperMotor_RBAC.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "STM32_stepperMotor_RBAC.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) default.size.stdout stepperMotor_control.elf stepperMotor_control.list stepperMotor_control.map
+	-$(RM) STM32_stepperMotor_RBAC.elf STM32_stepperMotor_RBAC.list STM32_stepperMotor_RBAC.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

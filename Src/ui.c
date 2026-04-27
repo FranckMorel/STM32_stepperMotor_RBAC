@@ -5,10 +5,7 @@
  *      Author: Morel
  */
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 88455b31cb6fd77162db44a974472b4aa4adda20
 #include "ui.h"
 #include "tft.h"
 #include "motor_control.h"
@@ -92,6 +89,21 @@ void UI_DrawMenu(void)
     }
 }
 
+void UI_DrawStatus(void)
+{
+    tft_testFullScreenColor(TFT_BLACK);
+
+    tft_draw_string(20, 10, "Status", TFT_WHITE, TFT_BLACK);
+
+    tft_draw_string(10, 40, "Mode:", TFT_WHITE, TFT_BLACK);
+    tft_draw_string(70, 40, MotorControl_GetModeString(), TFT_YELLOW, TFT_BLACK);
+
+    tft_draw_string(10, 60, "State:", TFT_WHITE, TFT_BLACK);
+    tft_draw_string(70, 60, MotorControl_GetStateString(), TFT_YELLOW, TFT_BLACK);
+
+    tft_draw_string(10, 80, "Dir:", TFT_WHITE, TFT_BLACK);
+    tft_draw_string(70, 80, MotorControl_GetDirectionString(), TFT_YELLOW, TFT_BLACK);
+}
 
 void UI_NextItem(void){
     uint8_t count = 0;
@@ -156,11 +168,8 @@ void UI_SelectItem(void){
 	 }
 
 	 else if(currentMenu == UI_MENU_STATUS){
-		 UI_DrawMenu();
-		 tft_draw_char(25, 60, currentMode,TFT_WHITE,TFT_BLACK);
-		 tft_draw_char(25, 60 + 16, currentMode,TFT_WHITE,TFT_BLACK);
-		 tft_draw_char(25, 40 + 16, currentMode,TFT_WHITE,TFT_BLACK);
-
+		 UI_DrawStatus();
+		 return;
 	 }
 
 }
