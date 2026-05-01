@@ -43,7 +43,7 @@ void spi_gpio_Init(void){
 	GPIOA->MODER &= ~(3U << (7*2));
 	GPIOA->MODER |= (2U << (7*2));
 
-	//set PA3 as an OUTPUT Pin
+	//set PA8 as an OUTPUT Pin
 	GPIOA->MODER &= ~(3U << (8*2));
 	GPIOA->MODER |= (1U << (8*2));
 
@@ -74,10 +74,10 @@ void spi1_config(void){
 	RCC -> APB2ENR |= SPI1EN;
 
 	/*	Set clock to fpclk/2
-	 	BR zu 000 -> 16MHz/2 , SCL max beim ST7735S 15MHz
+	 	BR zu 010 -> 84MHz/8 , SCL max beim ST7735S 15MHz
 	 */
 	SPI1->CR1 &= ~(7U << 3);
-	SPI1->CR1 |= (0U << 3);
+	SPI1->CR1 |= (2U << 3);
 
 	// CPOL und CPHA auf MODE0 -> 0,0 laut Datenblatt ST7735S
 	SPI1 -> CR1 &= ~(SPI_CPOL);
@@ -132,7 +132,7 @@ void spi1_transmit(uint8_t *data, uint32_t size){
 }
 
 
-void spi1_recieve(uint8_t *data, uint32_t size){
+void spi1_receive(uint8_t *data, uint32_t size){
 
 	while(size){
 		SPI1 ->DR = 0;
@@ -147,7 +147,7 @@ void spi1_recieve(uint8_t *data, uint32_t size){
 
 void cs_enable(void){
 
-	// CS eneable by setting Pin 9 to LOW
+	// CS enable by setting Pin 9 to LOW
 	GPIOA -> BSRR = (1U<<25);
 }
 
