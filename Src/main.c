@@ -105,7 +105,7 @@ int main(void)
 
     while(1)
     {
-    	for(i=0; i<4; i++){
+    /*	for(i=0; i<4; i++){
     	moveForward(2048,1);
     	delay_ms(200);
         //for(volatile int i=0; i<1500000; i++){} // vorhin Delay mit Schleife
@@ -118,7 +118,7 @@ int main(void)
     	stepperStop();
     	delay_ms(2000);
     	i=0;
-
+    */
     }
 }
 

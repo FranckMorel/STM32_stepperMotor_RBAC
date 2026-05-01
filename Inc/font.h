@@ -1,7 +1,6 @@
 #ifndef FONT_H_
 #define FONT_H_
 
-#include "../../stepperMotor_control/Inc/font.h"
 
 #include <stdint.h>
 

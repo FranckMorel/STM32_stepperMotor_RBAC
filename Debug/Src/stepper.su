@@ -1,7 +1,7 @@
-../Src/stepper.c:46:13:step_Output	16	static
-../Src/stepper.c:62:6:stepper_init	8	static
-../Src/stepper.c:84:6:stepperStop	4	static
-../Src/stepper.c:90:13:stepForward	8	static
-../Src/stepper.c:102:13:stepBackward	8	static
-../Src/stepper.c:115:6:moveForward	24	static
-../Src/stepper.c:124:6:moveBackward	24	static
+../Src/stepper.c:37:13:step_Output	16	static
+../Src/stepper.c:53:6:stepper_init	8	static
+../Src/stepper.c:75:6:stepperStop	4	static
+../Src/stepper.c:81:13:stepForward	8	static
+../Src/stepper.c:93:13:stepBackward	8	static
+../Src/stepper.c:106:6:moveForward	24	static
+../Src/stepper.c:115:6:moveBackward	24	static
