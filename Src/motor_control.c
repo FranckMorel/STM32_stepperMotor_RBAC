@@ -24,7 +24,7 @@ static const MotorProfile_t userProfiles[] =
     [MODE_FAST]   = {4096, 1}
 };
 
-void MotorControl_Init(void){
+void MotorControl_init(void){
 
 	stepper_init();
 	currentMode = MODE_NORMAL;

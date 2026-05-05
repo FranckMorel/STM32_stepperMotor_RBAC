@@ -15,7 +15,7 @@
 #include "stm32f401xe.h"
 
 #define SPI1EN 			(1U<<12)
-#define GPIOEN			(1U<<0)
+#define GPIOAEN			(1U<<0)
 #define SPI_CPHA		(1U<<0)
 #define SPI_CPOL		(1U<<1)
 #define FUll_DuplexEN	(1U<<10)
@@ -32,9 +32,9 @@
 
 
 
-void spi_gpio_Init(void){
+void spi_gpio_init(void){
 
-	RCC -> AHB1ENR |= GPIOEN;
+	RCC -> AHB1ENR |= GPIOAEN;
 
 	// set PA5 and PA7 to alternate function Mode
 	GPIOA->MODER &= ~(3U << (5*2));

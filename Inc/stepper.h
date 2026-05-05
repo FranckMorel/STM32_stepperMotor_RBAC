@@ -11,7 +11,7 @@
 
 #include <stdint.h>
 
-
+//A0,A1,A2,A3
 #define IN1_AN			(GPIOA -> BSRR = (1U<<0))
 #define IN1_AUS			(GPIOA -> BSRR = (1U<<16))
 #define IN2_AN			(GPIOA -> BSRR = (1U<<1))

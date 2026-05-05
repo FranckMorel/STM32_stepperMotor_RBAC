@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-void tim2_Init(void);
+void tim2_init(void);
 //void speedDelay_ms(uint32_t delayTime);
 void delay_ms(uint32_t delayTime);
 

@@ -1,4 +1,4 @@
-../Src/motor_control.c:27:6:MotorControl_Init	1
+../Src/motor_control.c:27:6:MotorControl_init	1
 ../Src/motor_control.c:34:6:MotorControl_Stop	1
 ../Src/motor_control.c:39:6:MotorControl_RunUserMode	2
 ../Src/motor_control.c:55:6:MotorControl_RunAdminCustom	4

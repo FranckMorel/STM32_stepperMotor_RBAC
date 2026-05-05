@@ -49,6 +49,7 @@ int main(void){
 		PA0 PA1 PA2 PA3
 		01  01  01  01  ->  010101
 	*/
+
 /*
 	void Vorwaerts_R(){
 		for(volatile int y=0; y<4; y++){
@@ -92,33 +93,25 @@ int main(void){
 */
 
 
-#include <stepper.h>
 #include <timer.h>
+#include <tft.h>
+#include <ui.h>
+#include <motor_control.h>
+
 
 
 int main(void)
 {
-    stepper_init();
-    tim2_Init();
-    uint8_t i;
+
+    tim2_init();
+    tft_init();
+    MotorControl_init();
+    UI_DrawMenu();
 
 
     while(1)
     {
-    /*	for(i=0; i<4; i++){
-    	moveForward(2048,1);
-    	delay_ms(200);
-        //for(volatile int i=0; i<1500000; i++){} // vorhin Delay mit Schleife
 
-        moveBackward(2048,1);
-        delay_ms(200);
-        //for(volatile int i=0; i<1500000; i++){}
-    	}
-
-    	stepperStop();
-    	delay_ms(2000);
-    	i=0;
-    */
     }
 }
 

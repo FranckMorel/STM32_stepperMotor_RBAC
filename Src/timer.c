@@ -1,7 +1,7 @@
 #include <stm32f401xe.h>
 
 
-void tim2_Init(void){
+void tim2_init(void){
 	RCC -> APB1ENR |= (1U<<0);
 
 	TIM2 -> PSC = 1600 - 1; // 16MHz

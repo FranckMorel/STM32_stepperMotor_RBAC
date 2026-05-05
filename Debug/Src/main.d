@@ -1,3 +1,6 @@
-Src/main.o: ../Src/main.c ../Inc/stepper.h ../Inc/timer.h
-../Inc/stepper.h:
+Src/main.o: ../Src/main.c ../Inc/timer.h ../Inc/tft.h ../Inc/ui.h \
+ ../Inc/motor_control.h
 ../Inc/timer.h:
+../Inc/tft.h:
+../Inc/ui.h:
+../Inc/motor_control.h:

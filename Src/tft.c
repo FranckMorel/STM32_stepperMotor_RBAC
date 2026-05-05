@@ -48,7 +48,10 @@ void tft_reset(void){
     delay_ms(120);
 }
 
-void tft_Init(){
+void tft_init(){
+
+	spi_gpio_init();
+	spi1_config();
 
     tft_reset();
     tft_write_cmd(SWRESET);

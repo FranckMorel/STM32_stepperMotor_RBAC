@@ -1,6 +1,7 @@
 #include <stm32f401xe.h>
 #include <stepper.h>
 
+
 static int stepIndex = 0;
 volatile uint32_t stepDelay_ms = 1;
 
@@ -52,8 +53,8 @@ static void step_Output(int stepIndex){
 
 void stepper_init(void){
 
-	RCC -> AHB1ENR |= (1<<0);
-	RCC -> AHB1ENR |= (1<<1);
+	RCC -> AHB1ENR |= (1<<0); // GPIOAEN
+	RCC -> AHB1ENR |= (1<<1); // GPIOBEN
 
 	GPIOA -> MODER &= ~(3U << (0*2));
 	GPIOA -> MODER |=  (1U <<(0*2));

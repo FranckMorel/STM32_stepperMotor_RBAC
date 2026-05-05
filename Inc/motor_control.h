@@ -37,7 +37,7 @@ typedef struct
     uint32_t stepDelayMs;
 } MotorProfile_t;
 
-void MotorControl_Init(void);
+void MotorControl_init(void);
 void MotorControl_Stop(void);
 
 void MotorControl_SetMode(MotorMode_t mode);
