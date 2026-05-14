@@ -7,7 +7,13 @@
 
 #include <motor_control.h>
 #include <stepper.h>
+#include <timer.h>
 
+static uint32_t lastStepTime = 0;
+static uint32_t stepDelay_ms = 1;
+
+static uint32_t targetSteps = 0;
+static uint32_t currentSteps = 0;
 
 volatile MotorMode_t currentMode = MODE_NORMAL;
 volatile MotorDirection_t currentDirection = DIR_FORWARD;
@@ -33,25 +39,47 @@ void MotorControl_init(void){
 
 void MotorControl_Stop(void){
 	stepperStop();
+	currentState = MOTOR_STOPPED;
 }
 
 
 void MotorControl_RunUserMode(void){
-	MotorProfile_t profile = userProfiles[currentMode];
 
-	currentState =  MOTOR_RUNNING;
-	if( currentDirection ==  DIR_FORWARD)
-		{
-		  moveForward(profile.steps, profile.stepDelayMs);
-	    }
-	else
-		{
-		  moveBackward(profile.steps, profile.stepDelayMs);
-		}
-	currentState = MOTOR_IDLE;
+	   MotorProfile_t profile = userProfiles[currentMode];
+
+	   stepDelay_ms = profile.stepDelayMs;
+	   lastStepTime = timer_ms();
+
+	   targetSteps = profile.steps;
+	   currentSteps = 0;
+
+	   currentState = MOTOR_RUNNING;
 
 }
 
+void MotorControl_Task(void)
+{
+    if(currentState != MOTOR_RUNNING)
+        return;
+
+    if((timer_ms() - lastStepTime) >= stepDelay_ms)
+    {
+        lastStepTime = timer_ms();
+        	if(currentDirection == DIR_FORWARD)
+                stepForward();
+            else
+                stepBackward();
+
+        	currentSteps++;
+
+        if(currentSteps >= targetSteps){
+        	stepperStop();
+        	currentState = MOTOR_IDLE;
+        	}
+    }
+}
+
+/*
 void MotorControl_RunAdminCustom(void){
 
 	if(adminSteps > 0 &&  adminDelayMs >= 1 ){
@@ -74,6 +102,7 @@ void MotorControl_RunAdminCustom(void){
 
 }
 
+*/
 
 void MotorControl_SetMode(MotorMode_t mode){
 	if(mode <= MODE_FAST)

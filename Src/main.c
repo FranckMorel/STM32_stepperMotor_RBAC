@@ -92,25 +92,37 @@ int main(void){
 
 */
 
-
+#include <board_gpio.h>
 #include <timer.h>
+#include <motor_control.h>
 #include <tft.h>
 #include <ui.h>
-#include <motor_control.h>
+#include <encoder.h>
+#include <stm32f401xe.h>
 
 
 
 int main(void)
 {
-
+	board_gpio_init();
     tim2_init();
     tft_init();
+    encoder_init();
     MotorControl_init();
     UI_DrawMenu();
-
+    //MotorControl_RunUserMode();
 
     while(1)
     {
+    	 // encoder_task();
+    	 // encoder_button_task();
+    	 //MotorControl_Task();
+    	moveForward(2048,1);
+    	/*stepperStop();
+    	delay_ms(1000);
+    	moveBackward(1024,1);
+    	stepperStop();
+    	delay_ms(1000);*/
 
     }
 }

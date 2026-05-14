@@ -4,11 +4,8 @@
 
  alternate funtion mapping -> Data sheet stm32f401re
 
- PA8 -> RST , OUTPUT PIN
- PA6 -> DC , OUTPUT PIN
  PA7 -> MOSI , AF
  PA5 -> SCK , AF
- PA9 -> SS , OUTPUT PIN
 
  */
 
@@ -34,26 +31,12 @@
 
 void spi_gpio_init(void){
 
-	RCC -> AHB1ENR |= GPIOAEN;
-
 	// set PA5 and PA7 to alternate function Mode
 	GPIOA->MODER &= ~(3U << (5*2));
 	GPIOA->MODER |= (2U << (5*2));
 
 	GPIOA->MODER &= ~(3U << (7*2));
 	GPIOA->MODER |= (2U << (7*2));
-
-	//set PA8 as an OUTPUT Pin
-	GPIOA->MODER &= ~(3U << (8*2));
-	GPIOA->MODER |= (1U << (8*2));
-
-	//set PA6 as an OUTPUT Pin
-	GPIOA->MODER &= ~(3U << (6*2));
-	GPIOA->MODER |= (1U << (6*2));
-
-	//set PA9 as an OUTPUT Pin
-	GPIOA->MODER &= ~(3U << (9*2));
-	GPIOA->MODER |= (1U << (9*2));
 
 	/* set alternate function type to SPI1
 	  Pins 0 to 7 -> alternate function LOW Register
@@ -145,15 +128,4 @@ void spi1_receive(uint8_t *data, uint32_t size){
 }
 
 
-void cs_enable(void){
-
-	// CS enable by setting Pin 9 to LOW
-	GPIOA -> BSRR = (1U<<25);
-}
-
-void cs_disable(void){
-
-	// CS disable by setting pin 9 to HIGH
-	GPIOA -> BSRR = (1U<<9);
-}
 

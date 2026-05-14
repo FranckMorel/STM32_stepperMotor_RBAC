@@ -21,8 +21,11 @@
 #define IN4_AN			(GPIOB -> BSRR = (1U<<0))
 #define IN4_AUS			(GPIOB -> BSRR = (1U<<16))
 
+void stepper_gpio_init(void);
 void stepper_init(void);
 void stepperStop(void);
+void stepForward(void);
+void stepBackward(void);
 void moveForward(uint16_t steps, uint32_t stepDelay_ms);
 void moveBackward(uint16_t steps, uint32_t stepDelay_ms);
 

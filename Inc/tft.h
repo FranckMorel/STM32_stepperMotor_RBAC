@@ -4,23 +4,10 @@
  *  Created on: Apr 23, 2026
  *      Author: Morel
  */
-
-
-#include <stdint.h>
-
 #ifndef TFT_H_
 #define TFT_H_
 
-#define DC_PIN     	6
-#define CS_PIN     	9
-#define RST_PIN  	8
-
-#define DC_HIGH()	(GPIOA -> BSRR = (1U<<6))
-#define DC_LOW()	(GPIOA -> BSRR = (1U<<(DC_PIN + 16)))
-
-#define RST_HIGH()	(GPIOA -> BSRR = (1U<<8))
-#define RST_LOW()	(GPIOA -> BSRR = (1U<<(RST_PIN + 16)))
-
+#include <stdint.h>
 
 // ab s104 -> ST7735S Datasheet v1.1: COMMANDOS
 #define SWRESET		0x01  // Reset zum Start
@@ -43,6 +30,9 @@
 #define TFT_BLUE    0x001F
 #define TFT_YELLOW  0xFFE0
 
+void tft_gpio_init(void);
+void tft_cs_enable(void);
+void tft_cs_disable(void);
 void tft_write_cmd(uint8_t cmd);
 void tft_write_data(uint8_t data);
 void tft_write_data16(uint16_t data);

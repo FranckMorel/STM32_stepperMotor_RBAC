@@ -192,7 +192,16 @@ void UI_SelectItem(void){
 	 }
 
 	 else if(currentMenu == UI_MENU_STATUS){
-		 UI_DrawStatus();
+		   if(currentItem == 3)
+		    {
+		        currentMenu = UI_MENU_MAIN;
+		        currentItem = 0;
+		        UI_DrawMenu();
+		    }
+		    else
+		    {
+		        UI_DrawStatus();
+		    }
 
 	 }
 }

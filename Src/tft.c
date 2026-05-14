@@ -4,6 +4,12 @@
  *  Created on: Apr 23, 2026
  *      Author: Morel
  */
+
+// PA8 -> RST , OUTPUT PIN
+// PA6 -> DC , OUTPUT PIN
+// PA9 -> CS , OUTPUT PIN
+
+
 #include "stm32f401xe.h"
 #include "tft.h"
 #include "spi.h"
@@ -11,22 +17,61 @@
 #include "font.h"
 
 
+#define DC_PIN     	6
+#define CS_PIN     	9
+#define RST_PIN  	8
+
+#define DC_HIGH()	(GPIOA -> BSRR = (1U<<6))
+#define DC_LOW()	(GPIOA -> BSRR = (1U<<(DC_PIN + 16)))
+
+#define RST_HIGH()	(GPIOA -> BSRR = (1U<<8))
+#define RST_LOW()	(GPIOA -> BSRR = (1U<<(RST_PIN + 16)))
+
+
+void tft_gpio_init(void){
+
+	//set PA8 as an OUTPUT Pin
+	GPIOA->MODER &= ~(3U << (RST_PIN*2));
+	GPIOA->MODER |= (1U << (RST_PIN*2));
+
+	//set PA6 as an OUTPUT Pin
+	GPIOA->MODER &= ~(3U << (DC_PIN*2));
+	GPIOA->MODER |= (1U << (DC_PIN*2));
+
+	//set PA9 as an OUTPUT Pin
+	GPIOA->MODER &= ~(3U << (CS_PIN*2));
+	GPIOA->MODER |= (1U << (CS_PIN*2));
+
+}
+
+void tft_cs_enable(void){
+
+	// CS enable by setting Pin 9 to LOW
+	GPIOA -> BSRR = (1U<<25);
+}
+
+void tft_cs_disable(void){
+
+	// CS disable by setting pin 9 to HIGH
+	GPIOA -> BSRR = (1U<<9);
+}
+
 // s24 -> ST7735S Datasheet v1.1: DC LOW for cmd and DC HIGH for data
 void tft_write_cmd(uint8_t cmd){
 
 	DC_LOW();
-	cs_enable();
+	tft_cs_enable();
 	spi1_transmit(&cmd,1);
-	cs_disable();
+	tft_cs_disable();
 
 }
 
 void tft_write_data(uint8_t data){
 
 	DC_HIGH();
-	cs_enable();
+	tft_cs_enable();
 	spi1_transmit(&data,1);
-	cs_disable();
+	tft_cs_disable();
 
 }
 
@@ -50,7 +95,6 @@ void tft_reset(void){
 
 void tft_init(){
 
-	spi_gpio_init();
 	spi1_config();
 
     tft_reset();
@@ -151,6 +195,7 @@ void tft_testFullScreenColor(uint16_t color){
 		tft_write_data16(color);
 
 	    }
+
 }
 
 

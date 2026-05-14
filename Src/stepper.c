@@ -2,9 +2,14 @@
 #include <stepper.h>
 
 
+#define IN1_PIN    0
+#define IN2_PIN    1
+#define IN3_PIN    4
+#define IN4_PIN    0
+
+
 static int stepIndex = 0;
 volatile uint32_t stepDelay_ms = 1;
-
 
 
 /*
@@ -51,22 +56,24 @@ static void step_Output(int stepIndex){
 
 }
 
+void stepper_gpio_init(void){
+
+	GPIOA -> MODER &= ~(3U << (IN1_PIN*2));
+	GPIOA -> MODER |=  (1U <<(IN1_PIN*2));
+
+	GPIOA -> MODER &= ~(3U << (IN2_PIN*2));
+	GPIOA -> MODER |=  (1U <<(IN2_PIN*2));
+
+	GPIOA -> MODER &= ~(3U << (IN3_PIN*2));
+	GPIOA -> MODER |=  (1U <<(IN3_PIN*2));
+
+	GPIOB -> MODER &= ~(3U << (IN4_PIN*2));
+	GPIOB -> MODER |=  (1U <<(IN4_PIN*2));
+
+}
+
+
 void stepper_init(void){
-
-	RCC -> AHB1ENR |= (1<<0); // GPIOAEN
-	RCC -> AHB1ENR |= (1<<1); // GPIOBEN
-
-	GPIOA -> MODER &= ~(3U << (0*2));
-	GPIOA -> MODER |=  (1U <<(0*2));
-
-	GPIOA -> MODER &= ~(3U << (1*2));
-	GPIOA -> MODER |=  (1U <<(1*2));
-
-	GPIOA -> MODER &= ~(3U << (4*2));
-	GPIOA -> MODER |=  (1U <<(4*2));
-
-	GPIOB -> MODER &= ~(3U << (0*2));
-	GPIOB -> MODER |=  (1U <<(0*2));
 
 	stepIndex = 0;
 	step_Output(stepIndex);
@@ -79,7 +86,7 @@ void stepperStop(void){
 
 }
 
-static void stepForward(void){
+void stepForward(void){
 	stepIndex++;
 	if(stepIndex >= 8){
 
@@ -91,7 +98,7 @@ static void stepForward(void){
 
 }
 
-static void stepBackward(void){
+void stepBackward(void){
 	stepIndex--;
 	if(stepIndex < 0){
 

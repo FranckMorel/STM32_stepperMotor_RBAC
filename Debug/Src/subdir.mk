@@ -5,6 +5,8 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Src/board_gpio.c \
+../Src/encoder.c \
 ../Src/font.c \
 ../Src/main.c \
 ../Src/motor_control.c \
@@ -17,6 +19,8 @@ C_SRCS += \
 ../Src/ui.c 
 
 OBJS += \
+./Src/board_gpio.o \
+./Src/encoder.o \
 ./Src/font.o \
 ./Src/main.o \
 ./Src/motor_control.o \
@@ -29,6 +33,8 @@ OBJS += \
 ./Src/ui.o 
 
 C_DEPS += \
+./Src/board_gpio.d \
+./Src/encoder.d \
 ./Src/font.d \
 ./Src/main.d \
 ./Src/motor_control.d \
@@ -48,7 +54,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/font.cyclo ./Src/font.d ./Src/font.o ./Src/font.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/motor_control.cyclo ./Src/motor_control.d ./Src/motor_control.o ./Src/motor_control.su ./Src/spi.cyclo ./Src/spi.d ./Src/spi.o ./Src/spi.su ./Src/stepper.cyclo ./Src/stepper.d ./Src/stepper.o ./Src/stepper.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/tft.cyclo ./Src/tft.d ./Src/tft.o ./Src/tft.su ./Src/timer.cyclo ./Src/timer.d ./Src/timer.o ./Src/timer.su ./Src/ui.cyclo ./Src/ui.d ./Src/ui.o ./Src/ui.su
+	-$(RM) ./Src/board_gpio.cyclo ./Src/board_gpio.d ./Src/board_gpio.o ./Src/board_gpio.su ./Src/encoder.cyclo ./Src/encoder.d ./Src/encoder.o ./Src/encoder.su ./Src/font.cyclo ./Src/font.d ./Src/font.o ./Src/font.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/motor_control.cyclo ./Src/motor_control.d ./Src/motor_control.o ./Src/motor_control.su ./Src/spi.cyclo ./Src/spi.d ./Src/spi.o ./Src/spi.su ./Src/stepper.cyclo ./Src/stepper.d ./Src/stepper.o ./Src/stepper.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/tft.cyclo ./Src/tft.d ./Src/tft.o ./Src/tft.su ./Src/timer.cyclo ./Src/timer.d ./Src/timer.o ./Src/timer.su ./Src/ui.cyclo ./Src/ui.d ./Src/ui.o ./Src/ui.su
 
 .PHONY: clean-Src
 

@@ -1,2 +1,5 @@
-../Src/timer.c:4:6:tim2_init	4	static
-../Src/timer.c:18:6:delay_ms	24	static
+C:/Users/kzvvftre/Documents/STM32-Baremetal_Workspace/STM32F4_Projektdateien/F4_chip_headers/CMSIS/Include/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+../Src/timer.c:13:6:tim2_init	8	static,ignoring_inline_asm
+../Src/timer.c:31:6:TIM2_IRQHandler	4	static
+../Src/timer.c:40:10:timer_ms	4	static
+../Src/timer.c:45:6:delay_ms	24	static

@@ -1,3 +1,5 @@
+"./Src/board_gpio.o"
+"./Src/encoder.o"
 "./Src/font.o"
 "./Src/main.o"
 "./Src/motor_control.o"

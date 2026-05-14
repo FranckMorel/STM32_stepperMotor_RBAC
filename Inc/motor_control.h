@@ -49,6 +49,8 @@ void MotorControl_SetAdminDelay(uint32_t delayMs);
 void MotorControl_RunUserMode(void);
 void MotorControl_RunAdminCustom(void);
 
+void MotorControl_Task(void);
+
 
 MotorMode_t MotorControl_GetMode(void);
 MotorDirection_t MotorControl_GetDirection(void);
