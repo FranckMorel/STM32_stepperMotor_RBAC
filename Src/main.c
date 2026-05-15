@@ -110,19 +110,13 @@ int main(void)
     encoder_init();
     MotorControl_init();
     UI_DrawMenu();
-    //MotorControl_RunUserMode();
+
 
     while(1)
     {
-    	 // encoder_task();
-    	 // encoder_button_task();
-    	 //MotorControl_Task();
-    	moveForward(2048,1);
-    	/*stepperStop();
-    	delay_ms(1000);
-    	moveBackward(1024,1);
-    	stepperStop();
-    	delay_ms(1000);*/
+    	 encoder_task();
+    	 encoder_button_task();
+    	 MotorControl_Task();
 
     }
 }

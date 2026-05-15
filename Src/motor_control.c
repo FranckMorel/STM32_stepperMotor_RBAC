@@ -15,6 +15,10 @@ static uint32_t stepDelay_ms = 1;
 static uint32_t targetSteps = 0;
 static uint32_t currentSteps = 0;
 
+static uint32_t pauseStartTime = 0;
+static uint32_t pauseTime_ms = 1000;
+static uint8_t pauseActive = 0;
+
 volatile MotorMode_t currentMode = MODE_NORMAL;
 volatile MotorDirection_t currentDirection = DIR_FORWARD;
 static MotorState_t currentState = MOTOR_IDLE;
@@ -39,6 +43,7 @@ void MotorControl_init(void){
 
 void MotorControl_Stop(void){
 	stepperStop();
+	pauseActive = 0;
 	currentState = MOTOR_STOPPED;
 }
 
@@ -61,6 +66,22 @@ void MotorControl_Task(void)
 {
     if(currentState != MOTOR_RUNNING)
         return;
+    if(pauseActive){
+
+    	if(timer_ms() - pauseStartTime >= pauseTime_ms){
+
+    		pauseActive = 0;
+    		currentSteps = 0;
+    		lastStepTime = timer_ms();
+
+    		if(currentDirection == DIR_FORWARD)
+    			currentDirection = DIR_BACKWARD;
+    		else
+    			currentDirection = DIR_FORWARD;
+    	}
+
+    	return;
+   }
 
     if((timer_ms() - lastStepTime) >= stepDelay_ms)
     {
@@ -74,7 +95,8 @@ void MotorControl_Task(void)
 
         if(currentSteps >= targetSteps){
         	stepperStop();
-        	currentState = MOTOR_IDLE;
+        	pauseStartTime = timer_ms();
+        	pauseActive = 1;
         	}
     }
 }
