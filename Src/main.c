@@ -98,7 +98,7 @@ int main(void){
 #include <tft.h>
 #include <ui.h>
 #include <encoder.h>
-#include <stm32f401xe.h>
+//#include <stm32f401xe.h>
 
 
 

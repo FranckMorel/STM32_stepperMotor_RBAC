@@ -74,10 +74,8 @@ void encoder_task(void)
 	            UI_NextItem();
 	        else
 	            UI_PrevItem();
-	        UI_DrawMenu();
 	    }
 
-	   // UI_DrawMenu();
 
 	    clk_last = clk_now;
 }

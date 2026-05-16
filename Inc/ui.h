@@ -22,6 +22,11 @@ typedef enum {
 
 
 void UI_DrawMenu(void);
+void UI_DrawStatus(void);
+void UI_UpdateSelection(void);
+void UI_NextItem(void);
+void UI_PrevItem(void);
+void UI_SelectItem(void);
 
 
 #endif /* UI_H_ */

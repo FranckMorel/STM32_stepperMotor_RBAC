@@ -1,5 +1,7 @@
-../Src/ui.c:44:6:UI_DrawMenu	6
-../Src/ui.c:91:6:UI_DrawStatus	2
-../Src/ui.c:118:6:UI_NextItem	6
-../Src/ui.c:134:6:UI_PrevItem	6
-../Src/ui.c:151:6:UI_SelectItem	13
+../Src/ui.c:42:13:UI_getCurrentMenuData	4
+../Src/ui.c:64:6:UI_DrawMenu	6
+../Src/ui.c:112:6:UI_DrawStatus	1
+../Src/ui.c:133:6:UI_UpdateSelection	3
+../Src/ui.c:157:6:UI_NextItem	2
+../Src/ui.c:173:6:UI_PrevItem	2
+../Src/ui.c:190:6:UI_SelectItem	12
