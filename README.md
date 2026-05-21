@@ -72,3 +72,7 @@ Status Menu
  ├── Motor State
  ├── Direction
  └── Back
+
+## Hardware Prototype
+
+![Motor Control System](motor_control_setup.jpeg)
