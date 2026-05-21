@@ -54,24 +54,25 @@ main.c
 ├── spi.c            -> Register-level SPI communication
 └── timer.c          -> Delay / timing functions
 ```
+
 ## User Interface Structure
 Main Menu
  ├── Start
  ├── Stop
  ├── Status
- └── Mode
+ ├── MODE
 
 Mode Menu
  ├── ECO
  ├── NORMAL
  ├── FAST
- └── Back
+ ├── Back
 
 Status Menu
  ├── Current Mode
  ├── Motor State
  ├── Direction
- └── Back
+ ├── Back
 
 ## Hardware Prototype
 
