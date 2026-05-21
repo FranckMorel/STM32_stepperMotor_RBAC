@@ -53,7 +53,7 @@ main.c
 ├── font.c           -> Font rendering for text output
 ├── spi.c            -> Register-level SPI communication
 └── timer.c          -> Delay / timing functions
-
+```
 ## User Interface Structure
 Main Menu
  ├── Start
